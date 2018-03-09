@@ -15,15 +15,15 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function setAppMenu() {
     var template = [{
         label: "File",
-        submenu: [{ label: "New Window", accelerator: "Cmd0rCtrl+N", click: _createWindow2.default }, { type: "separator" }, { label: "Close", accelerator: "Cmd0rCtrl+W", role: "close" }]
+        submenu: [{ label: "New Window", accelerator: "CmdOrCtrl+N", click: _createWindow2.default }, { type: "separator" }, { label: "Close", accelerator: "CmdOrCtrl+W", role: "close" }]
     }, {
         label: "Edit",
-        submenu: [{ label: "Copy", accelerator: "Cmd0rCtrl+C", role: "copy" }, { label: "Paste", accelerator: "Cmd0rCtrl+V", role: "paste" }, { label: "Cut", accelerator: "Cmd0rCtrl+X", role: "cut" }, { label: "Select", accelerator: "Cmd0rCtrl+A", role: "selectall" }]
+        submenu: [{ label: "Copy", accelerator: "CmdrCtrl+C", role: "copy" }, { label: "Paste", accelerator: "CmdrCtrl+V", role: "paste" }, { label: "Cut", accelerator: "CmdrCtrl+X", role: "cut" }, { label: "Select", accelerator: "CmdrCtrl+A", role: "selectall" }]
     }, {
         label: "View",
         submenu: [{
             label: "Reload",
-            accelerator: "Cmd0rCtrl+R",
+            accelerator: "CmdOrCtrl+R",
             click: function click(item, focusedWindow) {
                 return focusedWindow && focusedWindow.reload();
             }
