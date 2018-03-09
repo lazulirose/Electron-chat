@@ -8,7 +8,8 @@ const SIGNUP_FORM_STYLE = {
     padding: 30
 };
 
-const CANCEL_BUTTON_STYLE = {
+const SIGNUP_LINK_STYLE = {
+    display: "inline-block",
     marginLeft: 10
 };
 
@@ -21,9 +22,9 @@ export default class Login extends React.Component {
             errors: []
         };
 
-        this.handleOnChangeEmail = this.handleOnChangeEmail.bind(this);
-        this.handleOnChangePassword = this.handleOnChangePassword.bind(this);
-        this.handleOnSubmit = this.handleOnSubmit.bind(this);        
+        this.handleOnChangeEmail.bind(this);
+        this.handleOnChangePassword.bind(this);
+        this.handleOnSubmit.bind(this);        
     }
 
     handleOnChangeEmail(e) {
@@ -35,7 +36,7 @@ export default class Login extends React.Component {
     }
 
     handleOnSubmit(e) {
-        const { email, password, name, photoURL } = this.state;
+        const { email, password } = this.state;
         const errors = [];
         let isValid = true;
         e.preventDefault();
@@ -55,9 +56,9 @@ export default class Login extends React.Component {
             return;
         }
 
-        firebase.auth().createUserWithEmailAndPassword(email, password).then(() => {
+        firebase.auth().signInWithEmailAndPassword(email, password).then(() => {
             localStorage.userEmail = email;
-            ocalStorage.userPassword = password;
+            localStorage.userPassword = password;
             hashHistory.push("/rooms");
         }).catch(() => {
             this.setState({ errors: ["Incorrect email or password."] });
@@ -89,10 +90,10 @@ export default class Login extends React.Component {
                     />
                 </div>
                 <div className="form-group">
-                    <button className="btn btn-large btn-primary">Create new account</button>
-                    <Link to="/login">
-                        <button type="button" style={CANCEL_BUTTON_STYLE} className="btn btn-large btn-default">Cancel</button>                
-                    </Link>                    
+                    <button className="btn btn-large btn-default">Login</button>
+                    <div style={SIGNUP_LINK_STYLE}>	
+                        <Link to="/signup">Create new account!</Link>
+                    </div>                 
                 </div>
             </form>
 

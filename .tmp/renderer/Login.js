@@ -28,8 +28,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var FORM_STYLE = {
-    margin: "0 auto",
+var SIGNUP_FORM_STYLE = {
+    margin: "0, auto",
     padding: 30
 };
 
@@ -51,9 +51,10 @@ var Login = function (_React$Component) {
             password: localStorage.userPassword || "",
             errors: []
         };
+
         _this.handleOnChangeEmail.bind(_this);
         _this.handleOnChangePassword.bind(_this);
-        _this.handleOnChangeSubmit.bind(_this);
+        _this.handleOnSubmit.bind(_this);
         return _this;
     }
 
@@ -79,20 +80,23 @@ var Login = function (_React$Component) {
             var errors = [];
             var isValid = true;
             e.preventDefault();
+
             if (!email.length) {
                 isValid = false;
-                errors.push("Email can't be blank.");
+                errors.push("Email address can't be blank.");
             }
+
             if (!password.length) {
                 isValid = false;
                 errors.push("Password can't be blank.");
             }
+
             if (!isValid) {
                 this.setState({ errors: errors });
                 return;
             }
 
-            _firebaseBrowser2.default.auth().signInWithEmailAndPassword(email, password).than(function () {
+            _firebaseBrowser2.default.auth().signInWithEmailAndPassword(email, password).then(function () {
                 localStorage.userEmail = email;
                 localStorage.userPassword = password;
                 _reactRouter.hashHistory.push("/rooms");
@@ -105,22 +109,22 @@ var Login = function (_React$Component) {
         value: function render() {
             return _react2.default.createElement(
                 "form",
-                { style: FROM_STYLE, onSubmit: this.handleOnSumit },
-                _react2.default.createElement(_Errors2.default, { errorMessage: this.state.errors }),
+                { style: SIGNUP_FORM_STYLE, onSubmit: this.handleOnSubmit },
+                _react2.default.createElement(_Errors2.default, { errorMessages: this.state.errors }),
                 _react2.default.createElement(
                     "div",
                     { className: "form-group" },
                     _react2.default.createElement(
                         "label",
-                        { "for": "" },
-                        "Email address"
+                        null,
+                        "Email address*"
                     ),
                     _react2.default.createElement("input", {
                         type: "email",
                         className: "form-control",
                         placeholder: "email",
-                        onChange: this.handleOnChangeEmail,
-                        value: this.state.email
+                        value: this.state.email,
+                        onChange: this.handleOnChangeEmail
                     })
                 ),
                 _react2.default.createElement(
@@ -128,15 +132,15 @@ var Login = function (_React$Component) {
                     { className: "form-group" },
                     _react2.default.createElement(
                         "label",
-                        { "for": "" },
+                        null,
                         "Password"
                     ),
                     _react2.default.createElement("input", {
                         type: "password",
                         className: "form-control",
                         placeholder: "password",
-                        onChange: this.handleOnChangePassword,
-                        value: this.state.password
+                        value: this.state.password,
+                        onChange: this.handleOnChangePassword
                     })
                 ),
                 _react2.default.createElement(
