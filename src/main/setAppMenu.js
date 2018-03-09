@@ -14,10 +14,10 @@ function setAppMenu () {
         {
             label: "Edit",
             submenu: [
-                {label: "Copy", accelerator: "CmdrCtrl+C", role: "copy"},
-                {label: "Paste", accelerator: "CmdrCtrl+V", role: "paste"},
-                {label: "Cut", accelerator: "CmdrCtrl+X", role: "cut"},
-                {label: "Select", accelerator: "CmdrCtrl+A", role: "selectall"}
+                {label: "Copy", accelerator: "CmdOrCtrl+C", role: "copy"},
+                {label: "Paste", accelerator: "CmdOrCtrl+V", role: "paste"},
+                {label: "Cut", accelerator: "CmdOrCtrl+X", role: "cut"},
+                {label: "Select", accelerator: "CmdOrCtrl+A", role: "selectall"}
             ]
         },
         {
