@@ -1,20 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
+<html>
+  <head>
     <meta charset="UTF-8">
-    <title>Electron chat</title>
+    <title>Electron Chat</title>
     <link rel="stylesheet" href="node_modules/photon/dist/css/photon.css">
-</head>
-
-<body>
-<header class="toolbar toolbar-header">
-    <h1 class="title">Photon</h1>
-</header>
+  </head>
+  <body>
     <div class="window">
-        <div id="app" class="window-content"></div>
+      <div id="app" class="window-content"></div>
     </div>
+    <!-- build:js -->
     <script>require("./.tmp/renderer/app.js")</script>
-</body>
-
+    <!-- endbuild -->
+  </body>
 </html>

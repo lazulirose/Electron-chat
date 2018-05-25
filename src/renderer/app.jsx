@@ -8,29 +8,32 @@ import Room from "./Room";
 
 import firebase from "firebase/firebase-browser";
 
+// Firebaseの初期化
+const config = {
+  apiKey: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+  authDomain: "electron-chat-yyyyyy.firebaseapp.com",
+  databaseURL: "https://electron-chat-yyyyyy.firebaseio.com",
+  storageBucket: "electron-chat-yyyyyy.appspot.com",
+};
+firebase.initializeApp(config);
+
+// Routingの定義
 const appRouting = (
-    <Router history={hashHistory}>
-        <Route path="/">
-        <Route path="login" component={Login} />
-        <Route path="signup" component={Signup} />
-        <Route path="rooms" component={Rooms}>
-            <Route path=":roomId" component={Room} />
-        </Route>
-        </Route>
-    </Router>
+  <Router history={hashHistory}>
+    <Route path="/">
+      <Route path="login" component={Login} />
+      <Route path="signup" component={Signup} />
+      <Route path="rooms" component={Rooms}>
+        <Route path=":roomId" component={Room} />
+      </Route>
+    </Route>
+  </Router>
 );
 
+// Routingの初期化
 if (!location.hash.length) {
-    location.hash = "#/login";
+  location.hash = "#/login";
 }
-  var config = {
-    apiKey: "AIzaSyB1F_7bS6XOi_CgmFDhe9UlcQgdT_lF-8Q",
-    authDomain: "electron-chat-0127.firebaseapp.com",
-    databaseURL: "https://electron-chat-0127.firebaseio.com",
-    projectId: "electron-chat-0127",
-    storageBucket: "electron-chat-0127.appspot.com",
-    messagingSenderId: "646132157959"
-  };
-  firebase.initializeApp(config);
 
+// Applicationをrendering
 render(appRouting, document.getElementById("app"));
